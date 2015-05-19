@@ -1,0 +1,68 @@
+%% This document should serve as a base for most mathematically
+%% oriented documents. There is probably a better way to do this.
+
+\documentclass[11pt]{article}
+%\renewcommand\thesubsection{\thesection.\alph{subsection}}
+\usepackage{graphicx, subcaption, amsfonts, amsmath, amsthm, empheq, setspace, lscape}
+\captionsetup{width=0.8\textwidth}
+\newtheorem*{thm:jnf}{Jordan normal form for square matrices}
+% \usepackage[toc,page]{appendix}
+%% some new commands I have no idea how they work
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newlength\dlf
+\newcommand\alignedbox[2]{
+  % Argument #1 = before & if there were no box (lhs)
+  % Argument #2 = after & if there were no box (rhs)
+  &  % Alignment sign of the line
+  {
+    \settowidth\dlf{$\displaystyle #1$}  
+    % The width of \dlf is the width of the lhs, with a displaystyle font
+    \addtolength\dlf{\fboxsep+\fboxrule}  
+    % Add to it the distance to the box, and the width of the line of the box
+    \hspace{-\dlf}  
+    % Move everything dlf units to the left, so that & #1 #2 is aligned under #1 & #2
+    \boxed{#1 #2}
+    % Put a box around lhs and rhs
+  }
+}
+%% end new commands I have no idea how they work
+
+\newcommand\ER{Erd\H{o}s-R\'{e}nyi}
+\newcommand{\K}[1]{\mathcal{K}^{#1}}
+\newcommand{\Kk}{\mathcal{K}^k}
+\newcommand{\Forall}{\; \forall \;}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+\captionsetup{labelformat=empty,labelsep=none}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+% \setlength{\parindent}{1.5pt}
+\graphicspath{ {./figs/} }
+\pagestyle{plain}
+\begin{document}
+% \begin{spacing}{2.2}
+% \end{spacing}
+
+% \section{Introduction}
+
+% From geographically distributed power grids to online social media, a wide variety of systems have recently been studied in the framework of complex networks. While the flexibility of this methodology has facilitated its widespread application across different fields, it has also given rise to a vast range of descriptive paradigms such as basic unlabeled, undirected, static networks to dynamic, directed and labeled systems with complicated community structure. In turn, this has led to the development of many disparate methods designed to investigate some small subclass of this large family of problems. It is undoubtedly useful to incorporate system-specific information into network research, but it would also be useful to develop an investigative toolbox broadly applicable across systems. \\
+% When faced with a complex network, it is often beneficial to develop some reduced description of the problem that sufficiently captures desired behavior in a reduced number of variables. Identifying this reduced description itself aids in identifying important network features, and it can subsequently be used for more informed, and hopefully more computationally efficient, experimentation. This sort of dimensionality reduction has been found in a range of systems , but again, each problem required its own method of dimensionality reduction...
+
+% Due to the flexibility of this methodology, the actual structure and description of these 
+
+\section{Dimensionality reduction}
+
+Given some dataset $\{x_1, x_2, ..., x_N\}$ in which $x_i \in \mathbb{R}^n$, there are many techniques to uncover some simpler description of the data $\{y_1, y_2, ..., y_N\}$ where $y_i \in \mathbb{R}^p$ and $p \ll n$. The hope is that these new points that lie in a lower-dimensional space sufficiently capture, in some mathematically precise sense, the important features of the original data. In essence, we would like to describe our data as concisely as possible.
+
+Perhaps the most well-known method for achieving this is principal component analysis (PCA). This method attempts to capture the important features of the data through a linear fit. Thus, if the three-dimensional input points $x_i \in \mathbb{R}^3$ actually only span a two-dimensional plane, PCA would uncover two basis vectors for the plane itself, allowing each of the original three-dimensional points to be efficiently described with two new coordinates. This process is illustrated in Fig. (\ref{fig:pca}).
+
+Unfortunately, this conceptually simple technique assumes the data is well-described by linear relationships between the input variables, whereas datasets generally involve nonlinearities. Thus, in our application we turn to the nonlinear dimensionality reduction technique diffusion maps (DMAPS). Roughly speaking, by simulating a diffusion process over the dataset, DMAPS is able to reveal underlying, low-dimensional nonlinear structure. This is illustrated in Fig. (\ref{fig:swissroll}), in which the algorithm is applied to a collection of points $\{x_1, x_2, ..., x_N\}$, $x_i \in \mathbb{R}^3$ that lie on a curved plane. The result, shown in Fig. (\ref{fig:swissroll:embedding}) is a concise, two-dimensional embedding of the data into $\{y_1, y_2, ..., y_N\}$, $y_i \in \mathbb{R}^2$, giving us a more efficient description of each point by it's coordinates along the length and width of the underlying plane. Note that PCA would not be useful in this context, given that the data lie on a nonlinear manifold.
+
+\section{Distances between data points}
+In order to simulate diffusion over the dataset, DMAPS requires the distance between two points, $d(x_i, x_j) = \| x_i - x_j \|$, to be well defined. When each point $x_i$ is a vector in $\mathbb{R}^n$ as in our previous examples, the euclidean distance between points is often sufficient. However, in the dataset we investigate below, each point $x_i$ is not a vector, but actually a graph (or network).
+
+There are a number of ways of quantifying the distance between two graphs, $d(g_i, g_j)$, such as measuring how easily $g_i$ can be transformed into $g_j$, or by comparing random walks on the graphs \cite{edit_dist} \cite{graph_kernels}. In this paper, we consider two graphs to be similar if they share similar numbers of certain features. More precisely, we define a list of $k$ subgraphs $S$, as shown in Fig. (\ref{fig:subgraphs}). Then we count how many times each subgraph appears in our input graph, mapping each graph to a vector of subgraph counts: $g \rightarrow x$, $x = \{c_1, c_2, \ldots, c_k\}$. Now we take the set of subgraph-count vectors in $\mathbb{R}^k$ as the input to DMAPS, and use the euclidean distance as our notion of similarity. Thus $d(g_i, g_j) = \| x_i - x_j \|_2$. A schematic illustrating this process is given in Fig. (\ref{fig:subgraph_counting}).
+
+
+
+\end{document}
+
