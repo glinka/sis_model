@@ -56,16 +56,6 @@ Given some dataset $\{x_1, x_2, ..., x_N\}$ in which $x_i \in \mathbb{R}^n$, the
 
 Perhaps the best-known method for achieving this is principal component analysis (PCA). This method attempts to capture the important features of the data by identifying linear correlations between input variables. Thus, if the three-dimensional input points $x_i \in \mathbb{R}^3$ actually only span a two-dimensional plane, PCA would uncover two basis vectors spanning the plane itself, allowing each of the original three-dimensional points to be efficiently described with two new coordinates. This process is illustrated in Fig. (\ref{fig:pca}).
 
-\begin{figure}[!h]
-
-  \begin{center}
-    \includegraphics[width=1.0\textwidth]{pca_combined}
-    \caption{Three dimensional dataset (blue), and two-dimensional plane uncovered by PCA (black).}
-    \label{fig:pca}
-  \end{center}
-
-\end{figure}
-
 Unfortunately, as mentioned, this conceptually simple technique assumes the data is well-described by linear relationships between the input variables, whereas datasets generally involve nonlinearities. Thus, in our application we turn to the nonlinear dimensionality reduction technique diffusion maps (DMAPS). Roughly speaking, by simulating a diffusion process over the dataset, DMAPS is able to reveal underlying, low-dimensional nonlinear structure. This is accomplished by calculating approximate eigenfunctions (actually eigenvectors of a Markov matrix, denoted by $\Phi_i$) of the diffusion and subsequently using these eigenvectors to embed the data. This is illustrated in Fig. (\ref{fig:swissroll}), in which the algorithm is applied to a collection of points $\{x_1, x_2, ..., x_N\}$, $x_i \in \mathbb{R}^3$ that lie on a curved plane. The result, shown in Fig. (\ref{fig:swissroll:embedding}) is a concise, two-dimensional embedding of the data into $\{y_1, y_2, ..., y_N\}$, $y_i \in \mathbb{R}^2$, giving us a more efficient description of each point by it's coordinates along the length and width of the underlying plane. Note that PCA would not produce meaningful results in this context, as the relations between input variables are nonlinear.
 
 
@@ -88,20 +78,37 @@ Unfortunately, as mentioned, this conceptually simple technique assumes the data
 %   \label{fig:pca}
 % \end{figure}
 
-\begin{figure}[!h]
-    \begin{center}
-  \begin{subfigure}{1.0\textwidth}
-      \includegraphics[width=1.0\textwidth]{dmaps_dataset}
-      \caption{Three dimensional dataset lying on a curved surface.}
-      \label{fig:swissroll}
-  \end{subfigure}
-  \begin{subfigure}{1.0\textwidth}
-      \includegraphics[width=1.0\textwidth]{dmaps_embedding}
-      \caption{Embedding of data with first two unique DMAP coordinates. DMAP is able to uncover the underlying, nonlinear, two-dimensional parameterization of the datset.}
-      \label{fig:swissroll:embedding}
-  \end{subfigure}
-    \end{center}
-  \caption{Illustration of DMAPS ability to uncover nonlinear manifolds.}
+% \begin{figure}[!h]
+
+%   \begin{center}
+%     \begin{subfigure}{1.0\textwidth}
+%       \includegraphics[width=1.0\textwidth]{pca_combined_nogrid_v2}
+%       \caption{Three dimensional dataset (blue), and two-dimensional plane uncovered by PCA (black).}
+%       \label{fig:pca}
+%     \end{subfigure}
+%   \end{center}
+
+%   \begin{center}
+%     \begin{subfigure}{0.45\textwidth}
+%       \includegraphics[width=1.0\textwidth]{dmaps_dataset_nogrid_v2}
+%       \caption{Three dimensional dataset lying on a curved surface.}
+%       \label{fig:swissroll}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%       \includegraphics[width=1.0\textwidth]{dmaps_embedding_noticks_v2}
+%       \caption{Embedding of data with first two unique DMAP coordinates. DMAP is able to uncover the underlying, nonlinear, two-dimensional parameterization of the datset.}
+%       \label{fig:swissroll:embedding}
+%     \end{subfigure}
+%   \end{center}
+%   \caption{Illustration of DMAPS ability to uncover nonlinear manifolds.}
+
+% \end{figure}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{dim_red}
+    \caption{(1a) PCA uncovers the linear relationship (blue grid) within a noisy dataset of three-dimensional points lying approximately on a plane (red dots). (2a) Noisy, three-dimensional data on a \textit{nonlinear, curved surface}. Color denotes arclength. (2b) DMAPS embedding uncovering the two-dimensional parameterization of the dataset. Color denotes arclength from (2a).}    % \caption{Given noisy, three-dimensional data lying on a \textit{linear plane} (red dots in 1a), PCA uncovers the underlying linear relationship (blue grid). (2a) Given . Color denotes arclength. (2b) DMAPS embedding uncovering the two-dimensional parameterization of the dataset. Color denotes arclength (in original  }
+  \end{center}
 \end{figure}
 
 \clearpage
@@ -118,7 +125,7 @@ We illustrate the application of DMAPS to a set of graphs using
 
 \begin{figure}[!h]
   \begin{center}
-    \includegraphics[width=0.6\textwidth]{subgraph_counting}
+    \includegraphics[width=0.8\textwidth]{subgraph_counting_v2}
     \caption{Illustration of the subgraph-enumeration process with input graph $G$ and subgraph set $S$.}
   \end{center}
   \label{fig:subgraph_counting}

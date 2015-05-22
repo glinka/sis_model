@@ -11,6 +11,7 @@
 # images
 *.png
 *.jpeg
+*.svg
 
 # slurm commands and output
 *.cmd
