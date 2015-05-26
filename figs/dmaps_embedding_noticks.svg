@@ -15,7 +15,7 @@
    viewBox="0 0 1201.8287 767.53267"
    width="1502.2859"
    id="svg59082"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.47 r22583"
    sodipodi:docname="dmaps_embedding_noticks.svg">
   <metadata
      id="metadata71562">
@@ -37,15 +37,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1175"
+     inkscape:window-width="1680"
+     inkscape:window-height="973"
      id="namedview71560"
      showgrid="false"
      inkscape:zoom="0.45254834"
      inkscape:cx="986.8624"
-     inkscape:cy="170.51543"
+     inkscape:cy="258.90378"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="343"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg59082"
      fit-margin-top="0"
@@ -55,6 +55,13 @@
   <defs
      id="defs59084"
      style="stroke-linecap:square;stroke-linejoin:round">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 479.70792 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1502.2859 : 479.70792 : 1"
+       inkscape:persp3d-origin="751.14294 : 319.80528 : 1"
+       id="perspective129481" />
     <style
        type="text/css"
        id="style59086">
@@ -40296,29 +40303,24 @@
          height="1026" />
     </g>
   </g>
-  <g
-     transform="matrix(0,-0.98950309,-0.9896074,0,96.9815,378.56605)"
-     id="g71537"
-     style="stroke-linecap:square;stroke-linejoin:round">
-    <use
-       transform="translate(0,28.609375)"
-       xlink:href="#Cmmi10-c1"
-       id="use71539"
-       style="stroke-linecap:square;stroke-linejoin:round"
-       x="0"
-       y="0"
-       width="1728"
-       height="1026" />
-    <use
-       transform="matrix(0.7,0,0,0.7,59.521484,3.1)"
-       xlink:href="#Cmr10-33"
-       id="use71541"
-       style="stroke-linecap:square;stroke-linejoin:round"
-       x="0"
-       y="0"
-       width="1728"
-       height="1026" />
-  </g>
+  <use
+     height="1026"
+     width="1728"
+     y="0"
+     x="0"
+     style="stroke-linecap:square;stroke-linejoin:round"
+     id="use71539"
+     xlink:href="#Cmmi10-c1"
+     transform="matrix(0,-0.98950309,-0.9896074,0,68.669451,378.56605)" />
+  <use
+     height="1026"
+     width="1728"
+     y="0"
+     x="0"
+     style="stroke-linecap:square;stroke-linejoin:round"
+     id="use71541"
+     xlink:href="#Cmr10-33"
+     transform="matrix(0,-0.69265216,-0.69272518,0,93.913717,319.66936)" />
   <path
      inkscape:connector-curvature="0"
      id="path71550"
